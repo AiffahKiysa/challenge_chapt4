@@ -6,7 +6,7 @@
     <data>
         <variable
             name="dataEdit"
-            type="com.example.challengechapter4_revisi.dao.NoteData" />
+            type="com.example.challengechapter4_revisi.data.dao.NoteData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

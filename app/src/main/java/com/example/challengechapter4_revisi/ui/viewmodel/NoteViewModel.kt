@@ -1,11 +1,12 @@
-package com.example.challange4.room
+package com.example.challengechapter4_revisi.ui.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.challengechapter4_revisi.dao.NoteData
-import com.example.challengechapter4_revisi.dao.NoteDatabase
+import com.example.challengechapter4_revisi.data.dao.NoteRepository
+import com.example.challengechapter4_revisi.data.dao.NoteData
+import com.example.challengechapter4_revisi.data.dao.NoteDatabase
 import kotlinx.coroutines.launch
 
 class NoteViewModel(application: Application) : AndroidViewModel(application) {

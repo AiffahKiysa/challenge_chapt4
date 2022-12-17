@@ -10,19 +10,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.challange4.room.NoteViewModel
 import com.example.challengechapter4_revisi.R
-import com.example.challengechapter4_revisi.dao.NoteData
-import com.example.challengechapter4_revisi.dao.NoteDatabase
+import com.example.challengechapter4_revisi.data.dao.NoteData
+import com.example.challengechapter4_revisi.data.user.DataUserManager
 import com.example.challengechapter4_revisi.databinding.FragmentHomeBinding
+import com.example.challengechapter4_revisi.ui.viewmodel.LoginViewModel
+import com.example.challengechapter4_revisi.ui.viewmodel.NoteViewModel
 
 class HomeFragment : Fragment(), NoteAdapter.NotesInterface {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel : NoteViewModel by viewModels()
-    lateinit var  sharedPreferences : SharedPreferences
+    private lateinit var userViewModel: LoginViewModel
+    private lateinit var pref: DataUserManager
     private lateinit var builder : AlertDialog.Builder
     private lateinit var adapter : NoteAdapter
 
@@ -31,6 +35,9 @@ class HomeFragment : Fragment(), NoteAdapter.NotesInterface {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        pref = DataUserManager(requireContext())
+        userViewModel = ViewModelProvider(this, ViewModelFactory(pref))[LoginViewModel::class.java]
+
         _binding = FragmentHomeBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -40,22 +47,20 @@ class HomeFragment : Fragment(), NoteAdapter.NotesInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedPreferences = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
+
         builder = AlertDialog.Builder(context)
 
         adapter = NoteAdapter(this)
-        val user = sharedPreferences.getString(USERNAME, "")
-        binding.txtWelcome.text = "Welcome, $user!"
+        userViewModel.getUser().observe(viewLifecycleOwner) {
+            binding.txtWelcome.text = it.toString()
+        }
 
         dataEmpty()
+        logout()
 
         binding.apply {
             binding.btnAddNote.setOnClickListener{
                 findNavController().navigate(R.id.action_homeFragment_to_addNoteFragment)
-            }
-
-            binding.logout.setOnClickListener {
-                logout()
             }
         }
     }
@@ -93,12 +98,11 @@ class HomeFragment : Fragment(), NoteAdapter.NotesInterface {
     }
 
     private fun logout() {
-        var pref = sharedPreferences.edit()
-        pref.clear()
-        pref.apply()
-
-        Toast.makeText(context, "Berhasil logout", Toast.LENGTH_SHORT).show()
-        findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+        binding.logout.setOnClickListener(){
+            userViewModel.setIsLogin(false)
+            Toast.makeText(context, "Berhasil logout", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+        }
     }
 
     override fun onDestroyView() {

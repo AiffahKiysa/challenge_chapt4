@@ -1,4 +1,4 @@
-package com.example.challengechapter4_revisi.dao
+package com.example.challengechapter4_revisi.data.dao
 
 import android.os.Parcelable
 import androidx.room.Entity

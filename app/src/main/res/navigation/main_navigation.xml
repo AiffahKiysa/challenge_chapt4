@@ -53,6 +53,6 @@
         tools:layout="@layout/fragment_edit_note">
         <argument
             android:name="dataNotes"
-            app:argType="com.example.challengechapter4_revisi.dao.NoteData" />
+            app:argType="com.example.challengechapter4_revisi.data.dao.NoteData" />
     </dialog>
 </navigation>

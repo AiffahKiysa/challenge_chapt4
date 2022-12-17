@@ -12,10 +12,10 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.challange4.room.NoteViewModel
 import com.example.challengechapter4_revisi.R
 import com.example.challengechapter4_revisi.databinding.FragmentEditNoteBinding
-import com.example.challengechapter4_revisi.dao.NoteData
+import com.example.challengechapter4_revisi.data.dao.NoteData
+import com.example.challengechapter4_revisi.ui.viewmodel.NoteViewModel
 
 class EditNoteFragment : DialogFragment() {
     private var _binding : FragmentEditNoteBinding? = null

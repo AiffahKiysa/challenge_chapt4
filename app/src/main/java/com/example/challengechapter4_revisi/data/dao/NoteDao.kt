@@ -1,4 +1,4 @@
-package com.example.challengechapter4_revisi.dao
+package com.example.challengechapter4_revisi.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

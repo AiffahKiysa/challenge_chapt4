@@ -1,8 +1,8 @@
-package com.example.challange4.room
+package com.example.challengechapter4_revisi.data.dao
 
 import androidx.lifecycle.LiveData
-import com.example.challengechapter4_revisi.dao.NoteDao
-import com.example.challengechapter4_revisi.dao.NoteData
+import com.example.challengechapter4_revisi.data.dao.NoteDao
+import com.example.challengechapter4_revisi.data.dao.NoteData
 
 
 class NoteRepository(private val data: NoteDao) {

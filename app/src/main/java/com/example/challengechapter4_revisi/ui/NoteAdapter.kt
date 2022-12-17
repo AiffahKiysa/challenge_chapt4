@@ -1,12 +1,11 @@
 package com.example.challengechapter4_revisi.ui
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.challengechapter4_revisi.dao.NoteData
+import com.example.challengechapter4_revisi.data.dao.NoteData
 import com.example.challengechapter4_revisi.databinding.NoteListBinding
 
 class NoteAdapter(private var onClick : NoteAdapter.NotesInterface) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {

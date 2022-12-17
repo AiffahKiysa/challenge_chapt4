@@ -2,10 +2,13 @@ package com.example.challengechapter4_revisi.ui
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
@@ -20,6 +23,17 @@ class AddNoteFragment : DialogFragment() {
 
     private lateinit var sharedPreferences : SharedPreferences
     private val viewModel : NoteViewModel by viewModels()
+
+    override fun onStart() {
+        super.onStart()
+        dialog!!.window
+            ?.setLayout(
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.WRAP_CONTENT
+            )
+        dialog!!.window
+            ?.setBackgroundDrawable(ColorDrawable(Color.BLACK))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

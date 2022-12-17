@@ -19,7 +19,7 @@
             android:id="@+id/txt_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,35 +36,55 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_edit">
 
-            <EditText
-                android:id="@+id/edt_judul"
+            <com.google.android.material.textfield.TextInputLayout
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Input Judul"
-                android:text="@{dataEdit.title}" />
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/edt_catatan"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_judul"
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-black"
+                    android:hint="Judul"
+                    android:text="@{dataEdit.title}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="Input Isi notes"
-                android:text="@{dataEdit.content}" />
+                android:layout_height="wrap_content">
 
-        </LinearLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_catatan"
+                    android:textColorHint="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="8dp"
+                    android:textSize="12sp"
+                    android:hint="Catatan"
+                    android:text="@{dataEdit.content}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
         <Button
             android:id="@+id/btnEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginTop="20dp"
             android:text="Edit"
             android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            android:textStyle="bold"/>
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

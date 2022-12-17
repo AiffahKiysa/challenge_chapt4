@@ -10,4 +10,8 @@
     <string name="welcome">Welcome, username!</string>
     <string name="logout">Logout</string>
     <string name="home">Home</string>
+    <string name="belumPunyaAkun">Belum punya akun?</string>
+    <string name="registerHere">Register here</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_password">Password</string>
 </resources>

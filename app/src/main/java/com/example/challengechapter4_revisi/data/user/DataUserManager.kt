@@ -23,24 +23,13 @@ class DataUserManager(private val context: Context){
         )
     }
 
-    suspend fun setUsername(username: String) {
+    suspend fun setUser(username: String, email: String, password:String) {
         context.dataUser.edit { preferences ->
             preferences[USERNAME] = username
-        }
-    }
-
-    suspend fun setPassword(password: String) {
-        context.dataUser.edit { preferences ->
+            preferences[EMAIL] = email
             preferences[PASSWORD] = password
         }
     }
-
-    suspend fun setEmail(email: String) {
-        context.dataUser.edit { preferences ->
-            preferences[EMAIL] = email
-        }
-    }
-
 
     suspend fun setIsLogin(isLogin: Boolean) {
         context.dataUser.edit { preferences ->

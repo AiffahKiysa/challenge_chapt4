@@ -10,9 +10,7 @@ import kotlinx.coroutines.launch
 class RegisterViewModel(private val pref: DataUserManager): ViewModel() {
     fun saveUser(username: String, email: String, password: String){
         viewModelScope.launch {
-            pref.setUsername(username)
-            pref.setPassword(password)
-            pref.setEmail(email)
+            pref.setUser(username, email, password)
         }
     }
 
